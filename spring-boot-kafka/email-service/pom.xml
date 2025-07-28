@@ -54,6 +54,13 @@
 			<artifactId>spring-kafka-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Library -->
+		<dependency>
+			<groupId>io.enscrypting.bytes</groupId>
+			<artifactId>library</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
