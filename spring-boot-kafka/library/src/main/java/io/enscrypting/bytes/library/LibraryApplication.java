@@ -1,5 +1,6 @@
 package io.enscrypting.bytes.library;
 
+import io.enscrypting.bytes.library.dto.OrderEvent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

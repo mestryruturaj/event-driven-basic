@@ -1,5 +1,6 @@
 package io.enscrypting.bytes.order_service.config;
 
+import io.enscrypting.bytes.library.dto.OrderEvent;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,16 +18,16 @@ import java.util.Map;
 public class KafkaProducerConfig {
 
     @Bean
-    public ProducerFactory<String, Object> loadProducerFactory() {
+    public ProducerFactory<String, OrderEvent> loadProducerFactory() {
         Map<String, Object> configProperties = new HashMap<>();
-        configProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        configProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.17.54.233:9092");
         configProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         configProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return new DefaultKafkaProducerFactory<>(configProperties);
     }
 
     @Bean
-    public KafkaTemplate<String, Object> loadKafkaTemplate(@Qualifier("loadProducerFactory") ProducerFactory<String, Object> producerFactory) {
+    public KafkaTemplate<String, OrderEvent> loadKafkaTemplate(@Qualifier("loadProducerFactory") ProducerFactory<String, OrderEvent> producerFactory) {
         return new KafkaTemplate<>(producerFactory);
     }
 }
