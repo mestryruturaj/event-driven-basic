@@ -3,6 +3,7 @@ package io.enscrypting.bytes.order_service.service;
 
 import io.enscrypting.bytes.library.dto.Order;
 import io.enscrypting.bytes.library.dto.OrderEvent;
+import io.enscrypting.bytes.library.enums.EventType;
 import io.enscrypting.bytes.order_service.service.kafka.OrderEventPublisherService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +24,7 @@ public class OrderService {
 
         OrderEvent orderEvent = OrderEvent.builder()
                 .message("Order status is in pending state.")
-                .status("PENDING")
+                .eventType(EventType.ORDER_PLACED)
                 .order(order)
                 .build();
 

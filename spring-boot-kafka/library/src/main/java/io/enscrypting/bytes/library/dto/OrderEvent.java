@@ -1,6 +1,7 @@
 package io.enscrypting.bytes.library.dto;
 
 
+import io.enscrypting.bytes.library.enums.EventType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +13,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class OrderEvent {
     private String message;
-    private String status;
+    private EventType eventType;
     private Order order;
 }

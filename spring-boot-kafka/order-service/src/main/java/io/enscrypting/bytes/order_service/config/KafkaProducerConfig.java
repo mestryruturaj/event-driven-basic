@@ -1,5 +1,6 @@
 package io.enscrypting.bytes.order_service.config;
 
+import io.enscrypting.bytes.library.dto.OrderEvent;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +23,7 @@ public class KafkaProducerConfig {
     private String bootstrapServers;
 
     @Bean
-    public ProducerFactory<String, Object> loadProducerFactory() {
+    public ProducerFactory<String, OrderEvent> loadProducerFactory() {
         Map<String, Object> configProperties = new HashMap<>();
         configProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         configProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -31,7 +32,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, Object> loadKafkaTemplate(ProducerFactory<String, Object> producerFactory) {
+    public KafkaTemplate<String, OrderEvent> loadKafkaTemplate(ProducerFactory<String, OrderEvent> producerFactory) {
         return new KafkaTemplate<>(producerFactory);
     }
 }
