@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
 @Builder
 public class Item {
     @Id
-    private String id;
     private String name;
     private double price;
     private int qty;
