@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class OrderEventPublisherService {
+public class OrderPlacedEventPublisherService {
     private final KafkaTemplate<String, OrderEvent> kafkaTemplate;
     private final NewTopic orderTopic;
 
