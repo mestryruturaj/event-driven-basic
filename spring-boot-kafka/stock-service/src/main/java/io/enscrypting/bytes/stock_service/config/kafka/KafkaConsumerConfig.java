@@ -29,7 +29,6 @@ public class KafkaConsumerConfig {
     private String groupId;
 
     @Bean
-    @Primary
     public ConsumerFactory<String, OrderEvent> loadConsumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
@@ -45,7 +44,6 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    @Primary
     public ConcurrentKafkaListenerContainerFactory<String, OrderEvent> loadConcurrentKafkaListenerContainerFactory(@Qualifier("loadConsumerFactory") ConsumerFactory<String,OrderEvent> kafkaConsumerFactory) {
         ConcurrentKafkaListenerContainerFactory<String, OrderEvent> kafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<>();
         kafkaListenerContainerFactory.setConsumerFactory(kafkaConsumerFactory);
